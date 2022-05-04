@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+
+    <!-- CSS & JS -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+    
+</head>
+<body>
+    <div class="title">
+        <h1>Mi Cine</h1>
+    </div>
+
+    <div id="shutdown">
+        <img src="./assets/shutdown.svg" alt="apagar" height="40px" onclick="shutdown()">
+    </div>
+
+    <div class="container">
+        <a class="platform" onclick="openPlatform('https://www.youtube.com/')">
+            <img src="./assets/youtube-logo.png" alt="YouTube">
+            <h2>YouTube</h2>
+        </a>
+        <a class="platform" onclick="openPlatform('https://www.netflix.com/browse')">
+            <img src="./assets/netflix-logo.png" alt="Netflix">
+            <h2>Netflix</h2>
+        </a>
+        <a class="platform" onclick="openPlatform('https://www.primevideo.com/')">
+            <img src="./assets/prime-logo.png" alt="AmazonPrime">
+            <h2>Amazon Prime</h2>
+        </a>
+    </div>
+
+    <a onclick="exit()" id="exit">Salir</a>
+
+</body>
+</html>
