@@ -9,7 +9,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.setupAutolaunch = void 0;
 const electron_1 = require("electron");
 const path_1 = require("path");
 const electron_shutdown_command_1 = require("electron-shutdown-command");
@@ -20,6 +19,7 @@ function createWindow() {
         width: 1080,
         height: 600,
         fullscreen: true,
+        icon: (0, path_1.join)(__dirname, "icon.png"),
         webPreferences: {
             preload: (0, path_1.join)(electron_1.app.getAppPath(), 'build/preload.js'),
             // nodeIntegration: true,
@@ -33,21 +33,22 @@ function createWindow() {
         mainWindow = null;
     });
 }
-electron_1.app.on("ready", createWindow);
-electron_1.app.on("window-all-closed", function () {
-    if (process.platform !== "darwin")
-        electron_1.app.quit();
+electron_1.app.on("ready", () => {
+    createWindow();
+    setupAutolaunch();
 });
-electron_1.app.on("activate", function () {
-    if (mainWindow === null)
-        createWindow();
-});
+// app.on("window-all-closed", function () {
+//   if (process.platform !== "darwin") app.quit();
+// });
+// app.on("activate", function () {
+//   if (mainWindow === null) createWindow();
+// });
 /**
  * Enable auto-lunch to start app on the system boot
  */
 function setupAutolaunch() {
     return __awaiter(this, void 0, void 0, function* () {
-        let path = "";
+        let path = undefined;
         try {
             if (process.env.APPIMAGE)
                 path = process.env.APPIMAGE;
@@ -65,7 +66,6 @@ function setupAutolaunch() {
         }
     });
 }
-exports.setupAutolaunch = setupAutolaunch;
 ///// IPC /////
 electron_1.ipcMain.on("openUrl", (_, url) => {
     console.log(url);

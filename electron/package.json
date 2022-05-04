@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && electron .",
-    "electron:build:linux": "electron-builder -l"
+    "electron:build:linux": "electron-builder -l --armv7l"
   },
   "repository": {
     "type": "git",
@@ -50,6 +50,6 @@
       "target": [
           "AppImage"
       ]
-  }
+    }
   }
 }

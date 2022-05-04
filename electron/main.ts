@@ -10,6 +10,7 @@ function createWindow() {
     width: 1080,
     height: 600,
     fullscreen: true,
+    icon: join(__dirname, "icon.png"),
     webPreferences: {
         preload: join(app.getAppPath(), 'build/preload.js'),
         // nodeIntegration: true,
@@ -27,21 +28,24 @@ function createWindow() {
   });
 }
 
-app.on("ready", createWindow);
-
-app.on("window-all-closed", function () {
-  if (process.platform !== "darwin") app.quit();
+app.on("ready", () => {
+  createWindow();
+  setupAutolaunch();
 });
 
-app.on("activate", function () {
-  if (mainWindow === null) createWindow();
-});
+// app.on("window-all-closed", function () {
+//   if (process.platform !== "darwin") app.quit();
+// });
+
+// app.on("activate", function () {
+//   if (mainWindow === null) createWindow();
+// });
 
 /**
  * Enable auto-lunch to start app on the system boot
  */
- export async function setupAutolaunch() {
-  let path:string = "";
+ async function setupAutolaunch() {
+  let path:string|undefined = undefined;
   try {
     if(process.env.APPIMAGE) path = process.env.APPIMAGE;
     
