@@ -1,0 +1,55 @@
+{
+  "name": "smart-tv-interface-electron",
+  "version": "1.0.0",
+  "description": "simple interface for smart tv with raspberry pi",
+  "main": "build/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && electron .",
+    "electron:build:linux": "electron-builder -l"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguelx97/smart-tv-interface.git"
+  },
+  "author": "Miguel Martín",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miguelx97/smart-tv-interface/issues"
+  },
+  "homepage": "https://github.com/miguelx97/smart-tv-interface#readme",
+  "devDependencies": {
+    "electron": "^18.2.0",
+    "electron-builder": "^23.0.3"
+  },
+  "dependencies": {
+    "auto-launch": "^5.0.5",
+    "electron-shutdown-command": "^2.0.1"
+  },
+
+  "build": {
+    "productName": "smartTvInterface",
+    "appId": "miguel.martin.smartTvInterface",
+    "directories": {
+        "buildResources": "build"
+    },
+    "files": [
+      "../web/*",
+      "build/*"
+    ],
+    "extraResources": [
+      {
+          "from": "../web",
+          "to": "web"
+      }
+    ],
+    "linux": {
+      "category": "miguel.martin.smartTvInterface",
+      "icon": "icon.png",
+      "artifactName": "SmartTvInterface.AppImage",
+      "target": [
+          "AppImage"
+      ]
+  }
+  }
+}
